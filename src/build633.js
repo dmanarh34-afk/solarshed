@@ -218,8 +218,7 @@ export function buildCompact(ctx) {
     g.add(put(box(0.1, 0.05, 0.03, '#888'), 0.26, 0.7, 0.48)); g.add(put(box(0.1, 0.05, 0.03, '#e6c100'), 0.26, 0.6, 0.48)); // switch + earth levers
     for (let k = 0; k < 3; k++) g.add(put(cyl(0.014, 0.014, 0.02, '#ff9a2a', { emissive: '#ff6a00', emissiveIntensity: 1 }, 10).rotateX(Math.PI / 2), -0.1 + k * 0.05, 0.3, 0.476));
     g.add(put(sign('VPIS', 0.14, 0.04, { bg: null, fg: '#223', ppm: 300 }), -0.03, 0.24, 0.476));
-    g.add(put(hvSign(0.14, 'DANGER
-11 000 V'), -0.26, 0.12, 0.475)); g.add(put(arcSign(0.26), 0.15, 0.14, 0.475));
+    g.add(put(hvSign(0.14, 'DANGER\n11 000 V'), -0.26, 0.12, 0.475)); g.add(put(arcSign(0.26), 0.15, 0.14, 0.475));
     g.position.set(9.0 + 0.8 * i, 0, -2.4);
     const inner = new THREE.Group();
     for (let k = 0; k < 3; k++) { inner.add(put(cyl(0.05, 0.05, 0.4, '#e8e3d3', {}, 14), -0.18 + k * 0.18, 0.85, -0.05)); inner.add(put(box(0.04, 0.5, 0.04, C.cu, { metalness: 0.9 }), -0.18 + k * 0.18, 0.45, -0.3)); }
