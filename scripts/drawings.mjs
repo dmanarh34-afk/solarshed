@@ -1,4 +1,4 @@
-// Generates 2D plan-view layout drawings (SVG + PNG) for both systems into ./drawings
+// Generates 2D plan-view layout drawings (SVG + PNG + PDF) for both systems into ./drawings
 // usage: node scripts/drawings.mjs     (PNG export needs Chrome/Edge, same as verify)
 import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import puppeteer from 'puppeteer-core';
@@ -201,7 +201,8 @@ if (chrome) {
       await p.setViewport({ width: +m[1], height: +m[2], deviceScaleFactor: 1.5 });
       await p.setContent(`<body style="margin:0">${svg}</body>`);
       await p.screenshot({ path: `drawings/${n}.png` });
+      await p.pdf({ path: `drawings/${n}.pdf`, width: `${m[1]}px`, height: `${m[2]}px`, printBackground: true, pageRanges: '1' });
     }
   } finally { await b.close(); }
-  console.log('PNG written');
+  console.log('PNG + PDF written');
 }
