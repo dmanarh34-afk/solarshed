@@ -8,7 +8,7 @@ const M = 70;          // sheet margin
 const fmt = (n) => n.toFixed(1);
 
 function sheet({ title, sub, xmin, xmax, zmin, zmax, body, legend, notes, id }) {
-  const W = (xmax - xmin) * S + M * 2 + 330, H = Math.max((zmax - zmin) * S + M * 2 + 80, 760);
+  const W = (xmax - xmin) * S + M * 2 + 330, H = Math.max((zmax - zmin) * S + M * 2 + 80, M + 62 + legend.length * 21 + 44 + notes.length * 38 + 110);
   const X = (x) => M + (x - xmin) * S, Z = (z) => M + 40 + (z - zmin) * S;
   const o = [];
   const R = (x0, x1, z0, z1, cls, extra = '') => o.push(`<rect class="${cls}" x="${fmt(X(x0))}" y="${fmt(Z(z0))}" width="${fmt((x1 - x0) * S)}" height="${fmt((z1 - z0) * S)}" ${extra}/>`);
