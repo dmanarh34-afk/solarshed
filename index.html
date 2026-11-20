@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:,"><title>6 MW BoS Inverter &amp; MV Switchgear Shed - 3D</title>
+<link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+<div id="app">
+  <canvas id="gl"></canvas>
+  <header id="top">
+    <h1>BoS Inverter &amp; MV Switchgear Shed <small>6 MWac block &middot; 60 x 100 kW inverters &middot; 33 kV MV &middot; no PV modules modelled</small></h1>
+    <div id="views"></div>
+  </header>
+
+  <aside id="left">
+    <h2>Layers</h2>
+    <div id="layers"></div>
+    <h2>Display</h2>
+    <label class="row"><input type="checkbox" id="cutaway" checked> Cut away front wall</label>
+    <label class="row"><input type="checkbox" id="xray"> X-ray MV panels (busbars, VCB poles)</label>
+    <label class="row"><input type="checkbox" id="rotate"> Auto-rotate</label>
+    <label class="row col">Wall / roof opacity <input type="range" id="opacity" min="0" max="100" value="18"></label>
+    <h2>Cable legend</h2>
+    <ul id="legend">
+      <li><i style="background:#d0262e"></i>DC + (1500 Vdc)</li>
+      <li><i style="background:#1d2124"></i>DC &minus;</li>
+      <li><i style="background:#98a2ab"></i>AC conduit (800 V)</li>
+      <li><i style="background:#e0a02e"></i>LV AC collector</li>
+      <li><i style="background:#c8232c"></i>MV 33 kV cable</li>
+      <li><i style="background:#a6c21a"></i>Earth bar</li>
+    </ul>
+  </aside>
+
+  <aside id="right">
+    <nav id="tabs">
+      <button data-tab="sel" class="on">Selected</button>
+      <button data-tab="note">Eng. note</button>
+      <button data-tab="scale">Scale calc</button>
+      <button data-tab="sld">Single-line</button>
+    </nav>
+    <section id="tab-sel" class="tab on"></section>
+    <section id="tab-note" class="tab"></section>
+    <section id="tab-scale" class="tab"></section>
+    <section id="tab-sld" class="tab"></section>
+  </aside>
+  <div id="hint">Drag: orbit &middot; Right-drag: pan &middot; Wheel: zoom &middot; Click equipment for data &middot; Click labels to fly to them</div>
+  <div id="err"></div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
