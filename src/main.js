@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { buildPlant, shellMats, xrayMats } from './build.js';
+import { buildCompact } from './build633.js';
 import { initPanels } from './panels.js';
 
 const $ = (s) => document.querySelector(s);
@@ -48,7 +49,7 @@ scene.add(sun, sun.target, new THREE.HemisphereLight('#bcd2ea', '#40382f', 0.35)
 const LAYERS = [
   ['shell', 'Building shell (walls)', '#9fb0c0'], ['roof', 'Roof & steelwork', '#9fb0c0'],
   ['slab', 'Slab, trenches, yard', '#a3a8ad'], ['covers', 'Trench cover plates', '#5d646b'],
-  ['marks', 'Floor markings & signs', '#f2c500'], ['inv', '100 kW inverters (60)', '#4fd0ff'],
+  ['marks', 'Floor markings & signs', '#f2c500'], ['inv', '100 kW inverters', '#4fd0ff'],
   ['dc', 'DC input cabling', '#d0262e'], ['ac', 'LV AC cabling', '#e0a02e'],
   ['lv', 'LV AC combiner / ACB', '#e0a02e'], ['tx', 'Step-up transformer bay', '#c07a2a'],
   ['mv', 'MV switchgear lineup', '#ff5a5a'], ['mvc', 'MV cabling / outgoing', '#c8232c'],
@@ -59,7 +60,7 @@ const layers = {};
 LAYERS.forEach(([id]) => { layers[id] = new THREE.Group(); layers[id].name = id; scene.add(layers[id]); });
 
 const labels = [];
-const MAJOR = /^(60 x 100|LV AC combiner:|Step-up TX|MV switchgear 36|33 kV OUT|DC trench from PV|Roof exhaust|Clean-agent|Roof: steel)/;
+let MAJOR = /^$/;
 const anim = [];
 const ctx = {
   add: (id, o) => layers[id].add(o),
@@ -78,14 +79,14 @@ const ctx = {
   },
 };
 
-let plant;
-try { plant = buildPlant(ctx); } catch (e) { showErr('Build failed: ' + e.message); throw e; }
+let plant = null;
 
 /* ---------------- UI: layers ---------------- */
 const vis = Object.fromEntries(LAYERS.map(([id]) => [id, true]));
 function apply() {
   const cut = $('#cutaway').checked;
   for (const id in layers) layers[id].visible = vis[id];
+  if (!plant) return;
   plant.frontWall.visible = vis.shell && !cut;
   labels.forEach((l) => { l.o.visible = vis.labels && vis[l.layer]; });
   const x = $('#xray').checked;
@@ -109,15 +110,7 @@ $('#opacity').addEventListener('input', setOpacity);
 apply(); setOpacity();
 
 /* ---------------- camera views ---------------- */
-const VIEWS = {
-  Overview: [[24, 19, 36], [2, 0, 0]],
-  'Inverter hall': [[-10, 2.2, 2.4], [-13, 1.4, -4]],
-  'LV + TX': [[3, 3, 9], [6.5, 1.2, 0]],
-  'MV room': [[10, 2.6, 4.5], [12.4, 1.2, -3.8]],
-  'Top plan': [[-1, 46, 0.1], [-1, 0, 0]],
-  Trench: [[8, 5, 6], [8, -0.2, -2.5]],
-  'Roof / HVAC': [[10, 12, 14], [-1, 4.5, 0]],
-};
+let VIEWS = {};
 let tween = null;
 function goTo(p, t, dur = 1.1) {
   tween = { t0: performance.now(), dur: dur * 1000, p0: camera.position.clone(), t0v: controls.target.clone(), p1: new THREE.Vector3(...p), t1: new THREE.Vector3(...t) };
@@ -126,10 +119,12 @@ function flyTo(target) {
   const dir = camera.position.clone().sub(controls.target).normalize();
   goTo(target.clone().addScaledVector(dir, 6).toArray(), target.toArray(), 0.9);
 }
-Object.entries(VIEWS).forEach(([n, [p, t]]) => {
-  const b = document.createElement('button'); b.textContent = n; b.onclick = () => goTo(p, t); $('#views').appendChild(b);
-});
-camera.position.set(...VIEWS.Overview[0]); controls.target.set(...VIEWS.Overview[1]);
+function viewButtons() {
+  $('#views').innerHTML = '';
+  Object.entries(VIEWS).forEach(([n, [p, t]]) => {
+    const b = document.createElement('button'); b.textContent = n; b.onclick = () => goTo(p, t); $('#views').appendChild(b);
+  });
+}
 
 /* ---------------- selection ---------------- */
 const ray = new THREE.Raycaster();
@@ -187,5 +182,48 @@ function loop() {
   window.__frames = (window.__frames || 0) + 1;
   requestAnimationFrame(loop);
 }
-window.__app = { camera, controls, goTo, VIEWS, select, scene, layers };
+/* ---------------- scene switching ---------------- */
+const SCENES = {
+  '6mw': {
+    label: '6 MW  |  60 x 100 kW', sub: '6 MWac block · 60 x 100 kW inverters · 33 kV MV · no PV modules modelled', build: buildPlant, sun: [-1.5, 0], shadow: [-33, 31, 16, -16],
+    major: /^(60 x 100|LV AC combiner:|Step-up TX|MV switchgear 36|33 kV OUT|DC trench from PV|Roof exhaust|Clean-agent|Roof: steel)/,
+    views: {
+      Overview: [[24, 19, 36], [2, 0, 0]], 'Inverter hall': [[-10, 2.2, 2.4], [-13, 1.4, -4]], 'LV + TX': [[3, 3, 9], [6.5, 1.2, 0]],
+      'MV room': [[10, 2.6, 4.5], [12.4, 1.2, -3.8]], 'Top plan': [[-1, 46, 0.1], [-1, 0, 0]], Trench: [[8, 5, 6], [8, -0.2, -2.5]], 'Roof / HVAC': [[10, 12, 14], [-1, 4.5, 0]],
+    },
+  },
+  '633kw': {
+    label: '633 kW  |  6 x 100 kW', sub: '633 kWp DC / 600 kWac · 6 x 100 kW inverters · 11 kV RMU · no PV modules modelled', build: buildCompact, sun: [2, 0], shadow: [-14, 14, 9, -9],
+    major: /^(6 x 100|LV AC combiner|Step-up TX|11 kV RMU|11 kV OUT|DC trench from PV|Exhaust fans|7th unit|Roof ghosted)/,
+    views: {
+      Overview: [[17, 11, 19], [4, 0.5, -0.5]], 'Inverter rack': [[-3, 2.0, 1.6], [-3.4, 1.1, -2.6]], 'LV + TX': [[5, 2.6, 3.6], [5, 1.1, -2]],
+      'RMU / MV': [[9.8, 1.8, 2.4], [9.8, 1, -2.4]], 'Top plan': [[2, 24, 0.1], [2, 0, 0]], Trench: [[3, 4, 1.5], [3, -0.2, -2.2]], 'Roof / HVAC': [[6, 9, 9], [2, 3.2, -1]],
+    },
+  },
+};
+let current = null;
+function loadScene(id) {
+  if (!SCENES[id]) id = '6mw';
+  const sc = SCENES[id];
+  for (const g of Object.values(layers)) g.clear();
+  labels.forEach((l) => { scene.remove(l.o); l.o.element.remove(); });
+  labels.length = 0; anim.length = 0; shellMats.length = 0; xrayMats.length = 0;
+  select(null);
+  MAJOR = sc.major; VIEWS = sc.views;
+  try { plant = sc.build(ctx); } catch (e) { showErr('Build failed: ' + e.message); throw e; }
+  sun.target.position.set(sc.sun[0], 0, 0);
+  Object.assign(sun.shadow.camera, { left: sc.shadow[0], right: sc.shadow[1], top: sc.shadow[2], bottom: sc.shadow[3] });
+  sun.shadow.camera.updateProjectionMatrix();
+  panels.setScene(id);
+  document.querySelector('#top h1 small').textContent = sc.sub;
+  apply(); setOpacity(); viewButtons();
+  const [p, t] = VIEWS.Overview; camera.position.set(...p); controls.target.set(...t); tween = null;
+  document.querySelectorAll('#scenes button').forEach((b) => b.classList.toggle('on', b.dataset.id === id));
+  current = id; try { history.replaceState(null, '', '#' + id); } catch (e) { /* ignore */ }
+}
+Object.entries(SCENES).forEach(([id, sc]) => {
+  const b = document.createElement('button'); b.textContent = sc.label; b.dataset.id = id; b.onclick = () => loadScene(id); $('#scenes').appendChild(b);
+});
+loadScene(location.hash.slice(1) || '6mw');
+window.__app = { camera, controls, goTo, get VIEWS() { return VIEWS; }, select, scene, layers, loadScene, get current() { return current; } };
 loop();

@@ -44,3 +44,7 @@ input[type=range]{width:100%}
 #err{position:absolute;left:50%;top:70px;transform:translateX(-50%);background:#7a1a1a;color:#fff;padding:6px 10px;border-radius:6px;display:none;z-index:9}
 svg text{fill:#dbe4ec;font:11px system-ui,Arial}
 @media (max-width:900px){#right{top:auto;bottom:30px;height:40%;width:auto;left:10px}#left{display:none}}
+
+#scenes{display:flex;gap:6px;pointer-events:auto}
+#scenes button.on{background:var(--acc);color:#111;border-color:var(--acc);font-weight:600}
+#views{margin-left:6px;padding-left:12px;border-left:1px solid var(--line)}

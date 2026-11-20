@@ -1,31 +1,30 @@
-# 6 MW BoS Inverter & MV Switchgear Shed - 3D
+# BoS Inverter & MV Switchgear Shed - 3D (two scenes)
 
-Interactive **Three.js** scene (Vite). 60 x 100 kW inverters (6.0 MWac), LV combiner, 6.3 MVA 0.8/33 kV transformer and a 33 kV MV lineup in one shed. No PV modules are modelled. A 3D scene fits better than a flat diagram because trenches, racks, clearances and cable routes are spatial.
+Interactive **Three.js** scenes (Vite). Switch between them with the buttons at the top (or URL hash `#6mw` / `#633kw`). No PV modules are modelled.
+
+| Scene | Inverters | AC | Step-up | MV |
+|---|---|---|---|---|
+| **6 MW** | 60 x 100 kW (2 racks x 2 tiers x 15) | 6.0 MWac, ~7.5 MWp | 6.3 MVA 0.8/33 kV | 5-panel 36 kV metal-clad lineup |
+| **633 kW** | 6 x 100 kW on Unistrut rack (+ outlined 7th slot) | 600 kWac for 633 kWp (DC/AC 1.055); 7 units = 700 kWac, 0.90 | 630 kVA 0.4/11 kV | 3-panel 11 kV RMU (TX protection, ring in/out) |
 
 ## Run
 ```
 npm install
 npm run dev        # http://localhost:5173
 npm run build      # -> dist/
-npm run verify     # after build: headless Chrome/Edge load, fails on console errors, saves ./shots/*.png
+npm run verify     # after build: headless Chrome/Edge, both scenes, fails on console errors, screenshots in ./shots
 ```
 
-## Modelled
-- **Inverter hall:** 2 wall racks x 2 tiers x 15 = 60 inverters, 1.3 m pitch (airflow/cable gap), status LEDs, heat-sink fins, louvres. DC enters from outside trenches via a wall gland strip; AC conduits drop into floor trenches.
-- **LV:** 4 feeder cabinets (15 x 160 A MCCB each) + 5000 A main ACB, busbar trunking to the transformer.
-- **Transformer bay:** 6.3 MVA 0.8/33 kV Dyn11 cast-resin, interlocked mesh fence.
-- **MV room:** 5-panel 36 kV metal-clad lineup (IN, TX VCB, OUT, aux/VT, spare), breaker lamps (click a panel to trip/close), busbar duct, arc exhaust, HV/arc-flash labels, X-ray mode. MV cables exit through a sealed wall transit toward the substation.
-- **Infrastructure:** recessed trenches with ladder trays and cover plates, floor striping, arc-flash boundary and insulating mat, roof fans, ceiling duct, louvres, split A/C, clean-agent and extinguishers, emergency/LED lighting, earth bar.
+## Features
+Orbit camera, view presets per scene, 16 layer toggles, front-wall cutaway, wall opacity, X-ray (busbars/switch poles), click-to-inspect equipment, clickable callouts, switch/earth-switch indicators with interlock (click an MV panel), engineering note, sizing calculator and single-line tab per scene.
 
-## UI
-Orbit/pan/zoom, camera presets, 16 layer toggles (inverters, MV, trenches, HVAC, fire/safety...), front-wall cutaway, opacity, X-ray, click-to-inspect, clickable callouts, tabs for summary / sizing calculator / single-line.
+## 633 kW scene
+633 kWp DC / 6 x 100 kW = 600 kWac, DC/AC 1.055 (negligible clipping); optional 7th unit gives 700 kWac and N+1. Inverters have DC disconnects, status LEDs and bottom glands; DC enters via wall sleeves from an outside trench; AC goes through a grated trench to a 6 x 160 A MCCB combiner with SPD and metering, a 1250 A ACB, busbar trunking, the 630 kVA transformer bay and the 11 kV RMU. Perforated overhead tray for controls, exhaust fans + louvres + split A/C (~17 kW heat, ~0.9 m3/s), CO2 extinguishers, exit/emergency lighting, floor striping, 1.2 m arc-flash boundary.
 
-## 6 MW / 100 kW BoS summary
-- **Grouping:** 15 inverters per rack tier = 1.5 MW per MCCB cabinet; 4 cabinets into a 5000 A ACB (4.5 kA at 800 V for 6.3 MVA).
-- **Trenches:** DC in from outside, separate LV AC trenches per rack, separate MV trench; keep power/control segregated, bend radius 15 x OD, fire-stopped transits.
-- **Heat:** ~60 x 1.5 kW + TX ~45 kW = ~135 kW, about 7.5 m3/s at dT 15 K; filtered low intake, high exhaust, dedicated A/C for MV room.
-- **MV protection / clearances:** 36 kV 1250 A 25 kA/1 s internal-arc gear with exhaust duct, TX VCB 50/51 50N/51N 49, interlocked earthing, 1.5 m arc-flash boundary + insulating mat, 1.0 m aisles, two egress routes.
+## 6 MW scene
+See the in-app note: 60-inverter grouping, trench routing, ~135 kW heat (~7.5 m3/s), 25 kA/1 s internal-arc MV gear, 1.5 m arc-flash boundary.
+
 Values are illustrative concept figures, not a design.
 
 ## Files
-`src/build.js` geometry - `src/helpers.js` materials/signs/cables - `src/main.js` renderer/UI - `src/panels.js` info tabs - `scripts/verify.mjs` render check.
+`src/build.js` (6 MW) - `src/build633.js` (633 kW) - `src/helpers.js` - `src/main.js` (renderer, UI, scene switching) - `src/panels.js` - `scripts/verify.mjs`.

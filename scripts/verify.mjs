@@ -17,13 +17,16 @@ try {
   page.on('pageerror', (e) => errors.push('[pageerror] ' + e.message));
   await page.goto('http://localhost:4173/', { waitUntil: 'load' });
   await page.waitForFunction('window.__frames > 5', { timeout: 60000 });
-  for (const v of ['Overview', 'Inverter hall', 'LV + TX', 'MV room', 'Top plan']) {
-    await page.evaluate((n) => { const { VIEWS, camera, controls } = window.__app; const [p, t] = VIEWS[n]; camera.position.set(...p); controls.target.set(...t); controls.update(); }, v);
-    await new Promise((r) => setTimeout(r, 700));
-    await page.screenshot({ path: `shots/${v.replace(/\W+/g, '_')}.png` });
+  for (const sc of ['6mw', '633kw']) {
+    await page.evaluate((id) => window.__app.loadScene(id), sc);
+    await new Promise((r) => setTimeout(r, 600));
+    for (const v of Object.keys(await page.evaluate(() => window.__app.VIEWS))) {
+      await page.evaluate((n) => { const { VIEWS, camera, controls } = window.__app; const [p, t] = VIEWS[n]; camera.position.set(...p); controls.target.set(...t); controls.update(); }, v);
+      await new Promise((r) => setTimeout(r, 500));
+      await page.screenshot({ path: `shots/${sc}_${v.replace(/[^A-Za-z0-9]+/g, '_')}.png` });
+    }
+    console.log(sc, 'meshes:', await page.evaluate(() => { let m = 0; window.__app.scene.traverse((o) => { if (o.isMesh) m++; }); return m; }));
   }
-  const n = await page.evaluate(() => { let m = 0; window.__app.scene.traverse((o) => { if (o.isMesh) m++; }); return m; });
-  console.log('meshes:', n);
 } finally { await browser.close(); srv.kill(); }
 if (errors.length) { console.error('ERRORS:\n' + errors.join('\n')); process.exit(1); }
 console.log('verify OK: no console errors; screenshots in ./shots');
