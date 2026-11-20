@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1770 760" width="1770" height="760" font-family="Arial, sans-serif">
+<style>
+ .bg{fill:#fff}.h{font:bold 13px Arial;fill:#111}.th{font:bold 15px Arial;fill:#111}.lg{font:11px Arial;fill:#222}.lbl{font:10px Arial;fill:#111}.note{font:10.5px Arial;fill:#111}.dimt{font:10px Arial;fill:#036}
+ .wall{fill:#cfd3d6;stroke:#111;stroke-width:1.5}.floor{fill:#f4f5f6;stroke:none}.plinth{fill:none;stroke:#777;stroke-width:1;stroke-dasharray:6 4}
+ .trench{fill:url(#hat);stroke:#555;stroke-width:1}.trough{fill:#e3e6e8;stroke:#555;stroke-width:1}.rack{fill:#7a8590;stroke:#333}
+ .inv{fill:#cfe8ff;stroke:#036;stroke-width:1.2}.slot{fill:none;stroke:#e08a00;stroke-width:1.4;stroke-dasharray:5 3}.lv{fill:#ffe3a0;stroke:#8a5a00;stroke-width:1.2}
+ .tx{fill:#f0cfa0;stroke:#7a431a;stroke-width:1.4}.coil{fill:#c9853a;stroke:#5a3010}.fence{fill:none;stroke:#c9a400;stroke-width:2;stroke-dasharray:8 4}
+ .mv{fill:#ffc4c4;stroke:#900;stroke-width:1.2}.duct{fill:#ddd;stroke:#555}.arc{fill:none;stroke:#d00;stroke-width:1.8;stroke-dasharray:7 4}.mat{fill:#333;stroke:#000}
+ .dc{stroke:#d0262e;stroke-width:2;fill:none}.ac{stroke:#e0a02e;stroke-width:2.4;fill:none}.mvc{stroke:#c8232c;stroke-width:2.4;fill:none}.ctl{stroke:#2b5fd9;stroke-width:1.6;stroke-dasharray:6 3;fill:none}
+ .earth{stroke:#7ea000;stroke-width:1.5;fill:none}.fan{fill:#fff;stroke:#2a7;stroke-width:1.4}.louv{fill:#d7efe0;stroke:#2a7}.ac2{fill:#fff;stroke:#2a7;stroke-width:1.4}
+ .ext{fill:#c0141c;stroke:#600}.det{fill:#fff;stroke:#c00}.exit{fill:#0a8a3a;stroke:#063}.door{fill:#fff;stroke:#111;stroke-width:1.4}.swing{fill:none;stroke:#111;stroke-width:.8;stroke-dasharray:3 3}
+ .hz{fill:url(#haz);stroke:#111;stroke-width:.8}.line{stroke:#d9a800;stroke-width:2;fill:none}.route{stroke:#0a8a3a;stroke-width:3;stroke-dasharray:10 6;fill:none}
+ .dim{stroke:#036;stroke-width:1;fill:none}.lead{stroke:#333;stroke-width:.8}.dot{fill:#333}.tb{fill:#fff;stroke:#111;stroke-width:1.5}.zone{fill:none;stroke:#888;stroke-width:1;stroke-dasharray:2 4}
+</style>
+<defs>
+ <pattern id="hat" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#777" stroke-width="1.4"/></pattern>
+ <pattern id="haz" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="10" fill="#f2c500"/><rect x="5" width="5" height="10" fill="#111"/></pattern>
+</defs>
+<rect class="bg" width="1770" height="760"/>
+<text class="th" x="70" y="34">633 kWp / 6 x 100 kW BoS INVERTER SHED - GROUND FLOOR PLAN</text><text class="lg" x="70" y="50">6 x 100 kW string inverters (+ optional 7th), AC combiner, 630 kVA 0.4/11 kV TX, 3-panel 11 kV RMU</text>
+<rect class="plinth" x="158.0" y="314.0" width="824.0" height="264.0" />
+<rect class="wall" x="166.0" y="322.0" width="808.0" height="248.0" />
+<rect class="floor" x="174.0" y="330.0" width="792.0" height="232.0" />
+<rect class="trough" x="130.0" y="298.0" width="376.0" height="20.0" />
+<rect class="trough" x="130.0" y="126.0" width="16.0" height="172.0" />
+<line class="dc" x1="138.0" y1="126.0" x2="138.0" y2="308.0"/>
+<line class="dc" x1="138.0" y1="308.0" x2="490.0" y2="308.0"/>
+<rect class="trough" x="966.0" y="334.0" width="324.0" height="24.0" />
+<polygon class="trench" points="186.0,356.0 570.0,356.0 570.0,334.0 646.0,334.0 646.0,376.0 186.0,376.0"/>
+<polygon class="trench" points="806.0,398.0 830.0,398.0 830.0,358.0 966.0,358.0 966.0,334.0 806.0,334.0"/>
+<rect class="rack" x="174.0" y="330.0" width="380.0" height="2.4" />
+<rect class="inv" x="194.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="214.0" y="342.0" text-anchor="middle">INV1</text>
+<line class="dc" x1="188.0" y1="308.0" x2="188.0" y2="330.0"/>
+<line class="ac" x1="183.6" y1="350.0" x2="183.6" y2="366.0"/>
+<rect class="inv" x="246.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="266.0" y="342.0" text-anchor="middle">INV2</text>
+<line class="dc" x1="240.0" y1="308.0" x2="240.0" y2="330.0"/>
+<line class="ac" x1="235.6" y1="350.0" x2="235.6" y2="366.0"/>
+<rect class="inv" x="298.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="318.0" y="342.0" text-anchor="middle">INV3</text>
+<line class="dc" x1="292.0" y1="308.0" x2="292.0" y2="330.0"/>
+<line class="ac" x1="287.6" y1="350.0" x2="287.6" y2="366.0"/>
+<rect class="inv" x="350.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="370.0" y="342.0" text-anchor="middle">INV4</text>
+<line class="dc" x1="344.0" y1="308.0" x2="344.0" y2="330.0"/>
+<line class="ac" x1="339.6" y1="350.0" x2="339.6" y2="366.0"/>
+<rect class="inv" x="402.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="422.0" y="342.0" text-anchor="middle">INV5</text>
+<line class="dc" x1="396.0" y1="308.0" x2="396.0" y2="330.0"/>
+<line class="ac" x1="391.6" y1="350.0" x2="391.6" y2="366.0"/>
+<rect class="inv" x="454.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="474.0" y="342.0" text-anchor="middle">INV6</text>
+<line class="dc" x1="448.0" y1="308.0" x2="448.0" y2="330.0"/>
+<line class="ac" x1="443.6" y1="350.0" x2="443.6" y2="366.0"/>
+<rect class="slot" x="506.0" y="332.4" width="40.0" height="14.4" />
+<text class="lbl" x="526.0" y="342.0" text-anchor="middle">7th</text>
+<polyline class="ac" fill="none" points="198.0,366.0 570.0,366.0 582.0,354.0"/>
+<rect class="lv" x="570.0" y="334.0" width="36.0" height="32.0" />
+<text class="lbl" x="588.0" y="352.0" text-anchor="middle">AC</text>
+<text class="lbl" x="588.0" y="363.0" text-anchor="middle">COMB</text>
+<rect class="lv" x="606.0" y="334.0" width="36.0" height="32.0" />
+<text class="lbl" x="624.0" y="352.0" text-anchor="middle">ACB</text>
+<rect class="duct" x="642.0" y="349.0" width="60.0" height="18.0" />
+<rect class="fence" x="674.0" y="330.0" width="128.0" height="120.0" />
+<rect class="tx" x="702.0" y="346.0" width="72.0" height="64.0" />
+<circle class="coil" cx="738.0" cy="362.0" r="8.0"/>
+<circle class="coil" cx="738.0" cy="378.0" r="8.0"/>
+<circle class="coil" cx="738.0" cy="394.0" r="8.0"/>
+<text class="lbl" x="738.0" y="466.0" text-anchor="middle">TX BAY 11 kV</text>
+<polyline class="mvc" fill="none" points="738.0,362.8 812.0,362.8 812.0,338.0 842.0,338.0"/>
+<polyline class="mvc" fill="none" points="738.0,378.0 816.0,378.0 816.0,342.0 850.0,342.0"/>
+<polyline class="mvc" fill="none" points="738.0,393.2 820.0,393.2 820.0,346.0 858.0,346.0"/>
+<rect class="mv" x="834.0" y="332.0" width="32.0" height="36.0" />
+<text class="lbl" x="850.0" y="352.0" text-anchor="middle">P1</text>
+<rect class="mv" x="866.0" y="332.0" width="32.0" height="36.0" />
+<text class="lbl" x="882.0" y="352.0" text-anchor="middle">P2</text>
+<rect class="mv" x="898.0" y="332.0" width="32.0" height="36.0" />
+<text class="lbl" x="914.0" y="352.0" text-anchor="middle">P3</text>
+<rect class="arc" x="826.0" y="368.0" width="112.0" height="48.0" />
+<rect class="mat" x="834.0" y="368.8" width="96.0" height="23.2" opacity=".6"/>
+<polyline class="mvc" fill="none" points="874.0,354.0 1290.0,354.0"/>
+<polyline class="mvc" fill="none" points="906.0,341.2 1290.0,341.2"/>
+<polyline class="ctl" fill="none" points="194.0,394.0 954.0,394.0"/>
+<polyline class="earth" fill="none" points="178.0,560.0 178.0,332.0 962.0,332.0 962.0,560.0"/>
+<circle class="fan" cx="290.0" cy="326.0" r="8.8"/>
+<circle class="fan" cx="402.0" cy="326.0" r="8.8"/>
+<rect class="louv" x="590.0" y="570.8" width="40.0" height="4.0" />
+<rect class="louv" x="710.0" y="570.8" width="40.0" height="4.0" />
+<rect class="louv" x="830.0" y="570.8" width="40.0" height="4.0" />
+<rect class="louv" x="161.2" y="390.0" width="4.0" height="40.0" />
+<rect class="louv" x="161.2" y="462.0" width="4.0" height="40.0" />
+<rect class="ac2" x="954.0" y="434.8" width="12.0" height="38.4" />
+<rect class="ac2" x="978.0" y="436.0" width="16.0" height="36.0" />
+<rect class="door" x="165.2" y="488.0" width="9.6" height="36.0" />
+<line class="swing" x1="174.0" y1="488.0" x2="210.0" y2="488.0"/>
+<rect class="door" x="965.2" y="492.0" width="9.6" height="36.0" />
+<line class="swing" x1="966.0" y1="492.0" x2="930.0" y2="492.0"/>
+<circle class="ext" cx="178.0" cy="538.0" r="4.8"/>
+<circle class="ext" cx="962.0" cy="426.0" r="4.8"/>
+<circle class="det" cx="330.0" cy="446.0" r="4.0"/>
+<circle class="det" cx="610.0" cy="446.0" r="4.0"/>
+<circle class="det" cx="850.0" cy="446.0" r="4.0"/>
+<line class="line" x1="186.0" y1="388.0" x2="646.0" y2="388.0"/>
+<polyline class="route" fill="none" points="194.0,510.0 946.0,510.0"/>
+<line class="dim" x1="170.0" y1="614.0" x2="970.0" y2="614.0"/>
+<line class="dim" x1="170.0" y1="606.0" x2="170.0" y2="622.0"/>
+<line class="dim" x1="970.0" y1="606.0" x2="970.0" y2="622.0"/>
+<text class="dimt" x="570.0" y="610.0" text-anchor="middle">20.0 m</text>
+<line class="dim" x1="110.0" y1="326.0" x2="110.0" y2="566.0"/>
+<line class="dim" x1="102.0" y1="326.0" x2="118.0" y2="326.0"/>
+<line class="dim" x1="102.0" y1="566.0" x2="118.0" y2="566.0"/>
+<text class="dimt" transform="translate(105.0,446.0) rotate(-90)" text-anchor="middle">6.0 m</text>
+<line class="dim" x1="194.0" y1="594.0" x2="546.0" y2="594.0"/>
+<line class="dim" x1="194.0" y1="586.0" x2="194.0" y2="602.0"/>
+<line class="dim" x1="546.0" y1="586.0" x2="546.0" y2="602.0"/>
+<text class="dimt" x="370.0" y="590.0" text-anchor="middle">7 slots x 1.3 m (6 fitted)</text>
+<line class="dim" x1="834.0" y1="302.0" x2="930.0" y2="302.0"/>
+<line class="dim" x1="834.0" y1="294.0" x2="834.0" y2="310.0"/>
+<line class="dim" x1="930.0" y1="294.0" x2="930.0" y2="310.0"/>
+<text class="dimt" x="882.0" y="298.0" text-anchor="middle">3 x 0.8 = 2.4 m</text>
+<line class="dim" x1="958.0" y1="368.0" x2="958.0" y2="416.0"/>
+<line class="dim" x1="950.0" y1="368.0" x2="966.0" y2="368.0"/>
+<line class="dim" x1="950.0" y1="416.0" x2="966.0" y2="416.0"/>
+<text class="dimt" transform="translate(953.0,392.0) rotate(-90)" text-anchor="middle">1.2 m arc</text>
+<text class="h" x="370.0" y="458.0" text-anchor="middle">INVERTER ROOM  -  6 x 100 kW = 600 kWac</text>
+<text class="h" x="882.0" y="486.0" text-anchor="middle">MV / RMU ZONE</text>
+<text class="lbl" x="626.0" y="478.0" text-anchor="middle">LV</text>
+<line class="lead" x1="138.0" y1="206.0" x2="138.0" y2="150.0"/>
+<circle class="dot" cx="138.0" cy="206.0" r="2.0"/>
+<text class="note" x="138.0" y="146.8" text-anchor="start">DC trench from PV array</text>
+<line class="lead" x1="270.0" y1="366.0" x2="242.0" y2="214.0"/>
+<circle class="dot" cx="270.0" cy="366.0" r="2.0"/>
+<text class="note" x="242.0" y="210.8" text-anchor="middle">Grated LV trench + ladder tray</text>
+<line class="lead" x1="738.0" y1="378.0" x2="738.0" y2="222.0"/>
+<circle class="dot" cx="738.0" cy="378.0" r="2.0"/>
+<text class="note" x="738.0" y="218.8" text-anchor="middle">TX 630 kVA 0.4/11 kV Dyn11</text>
+<text class="note" x="738.0" y="229.8" text-anchor="middle">in fenced bay</text>
+<line class="lead" x1="882.0" y1="330.0" x2="882.0" y2="194.0"/>
+<circle class="dot" cx="882.0" cy="330.0" r="2.0"/>
+<text class="note" x="882.0" y="190.8" text-anchor="middle">11 kV RMU: TX prot. / ring in / ring out</text>
+<line class="lead" x1="1286.0" y1="346.0" x2="1210.0" y2="254.0"/>
+<circle class="dot" cx="1286.0" cy="346.0" r="2.0"/>
+<text class="note" x="1210.0" y="250.8" text-anchor="middle">11 kV ring in/out</text>
+<text class="note" x="1210.0" y="261.8" text-anchor="middle">to grid connection</text>
+<line class="lead" x1="586.0" y1="334.0" x2="502.0" y2="190.0"/>
+<circle class="dot" cx="586.0" cy="334.0" r="2.0"/>
+<text class="note" x="502.0" y="186.8" text-anchor="middle">AC combiner (6 x MCCB, SPD, meter)</text>
+<text class="note" x="502.0" y="197.8" text-anchor="middle">+ 1250 A ACB</text>
+<line class="lead" x1="346.0" y1="326.0" x2="402.0" y2="258.0"/>
+<circle class="dot" cx="346.0" cy="326.0" r="2.0"/>
+<text class="note" x="402.0" y="254.8" text-anchor="middle">Exhaust fans</text>
+<line class="lead" x1="730.0" y1="572.8" x2="730.0" y2="610.0"/>
+<circle class="dot" cx="730.0" cy="572.8" r="2.0"/>
+<text class="note" x="730.0" y="606.8" text-anchor="middle">Intake louvres</text>
+<line class="lead" x1="322.0" y1="394.0" x2="230.0" y2="446.0"/>
+<circle class="dot" cx="322.0" cy="394.0" r="2.0"/>
+<text class="note" x="230.0" y="442.8" text-anchor="middle">Overhead perforated tray</text>
+<text class="h" x="1410" y="110">LEGEND</text>
+<rect class="inv" x="1410" y="120" width="26" height="13"/>
+<text class="lg" x="1444" y="132">Inverter 100 kW</text>
+<rect class="lv" x="1410" y="141" width="26" height="13"/>
+<text class="lg" x="1444" y="153">LV combiner / ACB</text>
+<rect class="tx" x="1410" y="162" width="26" height="13"/>
+<text class="lg" x="1444" y="174">Step-up transformer</text>
+<rect class="mv" x="1410" y="183" width="26" height="13"/>
+<text class="lg" x="1444" y="195">MV switchgear</text>
+<rect class="trench" x="1410" y="204" width="26" height="13"/>
+<text class="lg" x="1444" y="216">Cable trench (grated / covered)</text>
+<rect class="trough" x="1410" y="225" width="26" height="13"/>
+<text class="lg" x="1444" y="237">Outside trough / MV yard trough</text>
+<line class="dc" x1="1410" y1="254" x2="1436" y2="254"/>
+<text class="lg" x="1444" y="258">DC feeder</text>
+<line class="ac" x1="1410" y1="275" x2="1436" y2="275"/>
+<text class="lg" x="1444" y="279">LV AC collector</text>
+<line class="mvc" x1="1410" y1="296" x2="1436" y2="296"/>
+<text class="lg" x="1444" y="300">MV cable</text>
+<line class="ctl" x1="1410" y1="317" x2="1436" y2="317"/>
+<text class="lg" x="1444" y="321">Overhead tray (controls/comms)</text>
+<line class="earth" x1="1410" y1="338" x2="1436" y2="338"/>
+<text class="lg" x="1444" y="342">Earth bar</text>
+<line class="fence" x1="1410" y1="359" x2="1436" y2="359"/>
+<text class="lg" x="1444" y="363">TX bay fence (key interlock)</text>
+<line class="arc" x1="1410" y1="380" x2="1436" y2="380"/>
+<text class="lg" x="1444" y="384">Arc-flash boundary</text>
+<line class="route" x1="1410" y1="401" x2="1436" y2="401"/>
+<text class="lg" x="1444" y="405">Escape route</text>
+<line class="line" x1="1410" y1="422" x2="1436" y2="422"/>
+<text class="lg" x="1444" y="426">Keep-clear line 1.0 m</text>
+<rect class="fan" x="1410" y="435" width="26" height="13"/>
+<text class="lg" x="1444" y="447">Exhaust fan</text>
+<rect class="louv" x="1410" y="456" width="26" height="13"/>
+<text class="lg" x="1444" y="468">Intake louvre</text>
+<rect class="ext" x="1410" y="477" width="26" height="13"/>
+<text class="lg" x="1444" y="489">Fire extinguisher / suppression</text>
+<line class="slot" x1="1410" y1="506" x2="1436" y2="506"/>
+<text class="lg" x="1444" y="510">Optional 7th inverter slot</text>
+<text class="h" x="1410" y="555">NOTES</text>
+<text class="lg" x="1410" y="575">1. 633 kWp DC / 600 kWac = ratio 1.055.</text>
+<text class="lg" x="1410" y="587">&#160;&#160;&#160;With 7th unit: 700 kWac, ratio 0.90.</text>
+<text class="lg" x="1410" y="613">2. DC via wall sleeves from outside trench;</text>
+<text class="lg" x="1410" y="625">&#160;&#160;&#160;bottom cable glands on each inverter.</text>
+<text class="lg" x="1410" y="651">3. LV AC grated trench -> combiner</text>
+<text class="lg" x="1410" y="663">&#160;&#160;&#160;(6 x 160 A MCCB, SPD, meter) -> 1250 A ACB.</text>
+<text class="lg" x="1410" y="689">4. MV: TX HV cables to RMU P1 via trench;</text>
+<text class="lg" x="1410" y="701">&#160;&#160;&#160;ring cables leave east in sealed transit.</text>
+<text class="lg" x="1410" y="727">5. No PV modules on roof, walls or yard.</text>
+<rect class="tb" x="1430" y="690" width="310" height="52"/>
+<text class="th" x="1440" y="712">DWG BOS-633-PL-01</text>
+<text class="lg" x="1440" y="730">Plan view, dimensions in m. Concept layout.</text>
+<line class="dim" x1="70" y1="724" x2="270" y2="724"/>
+<line class="dim" x1="70" y1="720" x2="70" y2="728"/>
+<line class="dim" x1="110" y1="720" x2="110" y2="728"/>
+<line class="dim" x1="150" y1="720" x2="150" y2="728"/>
+<line class="dim" x1="190" y1="720" x2="190" y2="728"/>
+<line class="dim" x1="230" y1="720" x2="230" y2="728"/>
+<line class="dim" x1="270" y1="720" x2="270" y2="728"/>
+<text class="lg" x="70" y="740">0</text><text class="lg" x="270" y="740" text-anchor="middle">5 m</text>
+<text class="lg" x="310" y="728">N &#8593; = rear wall at top (z-)</text>
+</svg>
